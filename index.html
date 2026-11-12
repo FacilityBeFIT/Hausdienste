@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hausdienste</title>
+
+<!--
+  ============================================================
+  STARTSEITE – öffnet sich automatisch unter der Hauptadresse
+  ------------------------------------------------------------
+  Neuer Hausdienst: eine Zeile <a class="knopf" href="DATEINAME.html">Text</a>
+  kopieren und Dateinamen + Text ändern. Der Dateiname muss genau so
+  heißen wie die Datei im Repository.
+  ============================================================
+-->
+
+<style>
+  /* ===== DESIGN (gleich wie bei den Listen) ===== */
+  :root {
+    --schrift: Verdana, Arial, sans-serif;
+    --textgroesse: clamp(17px, 1.6vw + 12px, 22px);
+    --farbe-hintergrund: #f4f1ea;
+    --farbe-karte: #ffffff;
+    --farbe-text: #000000;
+    --rahmen: 3px solid #000000;
+    --ecken: 12px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 16px;
+    background: var(--farbe-hintergrund);
+    color: var(--farbe-text);
+    font-family: var(--schrift);
+    font-size: var(--textgroesse);
+    line-height: 1.4;
+    -webkit-text-size-adjust: 100%;
+  }
+  body::before {               /* Hintergrundbild */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--farbe-hintergrund) var(--hintergrundbild);
+  }
+  .seite { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.4em; margin: 8px 0 20px; }
+  h2 { font-size: 1.1em; margin: 28px 0 10px; }
+
+  /* Ein Knopf = ein weißer Kasten mit Link zur Liste */
+  .knopf {
+    display: block;
+    background: var(--farbe-karte);
+    border: var(--rahmen);
+    border-radius: var(--ecken);
+    padding: 18px;
+    margin-bottom: 12px;
+    color: var(--farbe-text);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .knopf::after { content: "  ➜"; }   /* Pfeil hinter dem Text */
+  .knopf:active { background: #eeeeee; }
+</style>
+</head>
+<body>
+<div class="seite">
+
+  <h1>Hausdienste</h1>
+
+  <!-- ===== KÜCHE ===== -->
+  <h2>Küche</h2>
+  <a class="knopf" href="hausdienst-kueche-eg.html">Küche – Erdgeschoss</a>
+
+  <!-- ===== SANITÄRANLAGEN ===== -->
+  <h2>Sanitäranlagen</h2>
+  <a class="knopf" href="hausdienst-sanitaer-eg.html">Sanitäranlagen – Erdgeschoss</a>
+  <a class="knopf" href="hausdienst-sanitaer-6og.html">Sanitäranlagen – 6. Stock</a>
+
+</div>
+
+<!-- HINTERGRUND (lange Zeichenkette – nicht bearbeiten) -->
+<style>:root { --hintergrundbild: url("data:image/png;base64,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"); }</style>
+</body>
+</html>

@@ -19,6 +19,7 @@
                 dann liest die Computerstimme vor.
   6. FRAGEN:    Abschnitt "HILFE" – einen <div class="frage">-Block kopieren.
                 data-bild="..." = Name des Bildes. Ein Bild darf mehrmals verwendet werden.
+                data-ton="..." beim Vorlese-Knopf = Name der Sprachaufnahme (wie bei Aufgaben).
   7. BILDER UND AUFNAHMEN: ganz unten bei "MEDIEN". Jeder Eintrag hat einen Namen
                 (z. B. tabs) und eine lange Zeichenkette. Statt der Zeichenkette geht auch
                 ein Dateiname, z. B.  tabs: "tabs.jpg",  (Datei im selben Ordner).
@@ -330,10 +331,22 @@
   <!-- ===== HILFE ===== -->
   <h2>Hilfe</h2>
 
-  <div class="frage" data-bild="tabs">Wo sind die Tabs für den Geschirrspüler?</div>
-  <div class="frage" data-bild="besen">Wo sind Besen und Wischmopp?</div>
-  <div class="frage" data-bild="kueche">So soll die Küche sauber aussehen</div>
-  <div class="frage" data-bild="spuelgang">Kurzen Spülgang einschalten</div>
+  <div class="frage" data-bild="tabs">
+    <span class="text">Wo sind die Tabs für den Geschirrspüler?</span>
+    <button class="vorlesen" type="button" aria-label="Vorlesen" data-ton="frage_tabs"></button>
+  </div>
+  <div class="frage" data-bild="besen">
+    <span class="text">Wo sind Besen und Wischmopp?</span>
+    <button class="vorlesen" type="button" aria-label="Vorlesen" data-ton="frage_besen"></button>
+  </div>
+  <div class="frage" data-bild="kueche">
+    <span class="text">So soll die Küche sauber aussehen</span>
+    <button class="vorlesen" type="button" aria-label="Vorlesen" data-ton="frage_kueche"></button>
+  </div>
+  <div class="frage" data-bild="spuelgang">
+    <span class="text">Kurzen Spülgang einschalten</span>
+    <button class="vorlesen" type="button" aria-label="Vorlesen" data-ton="frage_spuelgang"></button>
+  </div>
 
   <footer>
     <button class="link" id="lehrer-link" type="button">Lehrer-Liste</button>
@@ -498,7 +511,8 @@ nameFeld.addEventListener("change", function () { schreiben(LISTEN_NAME + "|name
 document.querySelectorAll(".vorlesen").forEach(function (knopf) {
   if (!VORLESEN_AN) { knopf.style.display = "none"; return; }
   knopf.innerHTML = VORLESE_SYMBOL;
-  knopf.addEventListener("click", function () {
+  knopf.addEventListener("click", function (e) {
+    e.stopPropagation();   // bei Fragen: nur vorlesen, kein Bild öffnen
     aufnahme.pause();
     if (window.speechSynthesis) speechSynthesis.cancel();
 
@@ -663,6 +677,11 @@ spuelgang: "Bilder/spuelgang.gif",
   spuele: "Ton/kueche-eg-spuele.mp3",
   mikrowelle: "Ton/kueche-eg-mikrowelle.mp3",
   boden: "Ton/kueche-eg-boden.mp3",
+  // Sprachaufnahmen für die Hilfe-Fragen
+  frage_tabs: "Ton/kueche-eg-frage-tabs.mp3",
+  frage_besen: "Ton/kueche-eg-frage-besen.mp3",
+  frage_kueche: "Ton/kueche-eg-frage-kueche.mp3",
+  frage_spuelgang: "Ton/kueche-eg-frage-spuelgang.mp3",
 };
 </script>
 </body>
